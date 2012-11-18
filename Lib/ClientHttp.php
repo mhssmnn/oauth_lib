@@ -116,6 +116,7 @@ class ClientHelper {
 			'oauth_timestamp' => $this->timestamp(),
 			'oauth_nonce' => $this->nonce(),
 			'oauth_verifier' => @$this->options['oauth_verifier'],
+			'oauth_session_handle' => @$this->options['oauth_session_handle'],
 			'oauth_version' => '1.0'
 			);
 
@@ -309,7 +310,7 @@ class ClientHttp {
 		} else {
 			$this->sockUri = & new HttpSocket;
 		}
-		$this->sock = & new HttpSocket;
+		$this->sock = clone $this->sockUri;
 		$this->sock->config['request']['uri'] = $this->parseUri($url);
 		$this->sock->config['request']['header'] = $headers;
 		$this->sockUri->config['request']['uri'] = $this->parseUri($url);
