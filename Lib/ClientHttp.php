@@ -115,6 +115,7 @@ class ClientHelper {
 			'oauth_timestamp' => $this->timestamp(),
 			'oauth_nonce' => $this->nonce(),
 			'oauth_verifier' => @$this->options['oauth_verifier'],
+			'oauth_session_handle' => @$this->options['oauth_session_handle'],
 			'oauth_version' => '1.0'
 			);
 
@@ -433,6 +434,7 @@ class ClientHttp {
 				'X-HTTP_AUTHORIZATION' => $request->authorization,
 			),
 		);
+		$query['header'] += $this->sock->config['request']['header'];
 		if (empty($body) && (in_array($request->method, array('POST', 'PUT')))) {
 			$query['header']['Content-Length'] = 0; 
 		}

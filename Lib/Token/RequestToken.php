@@ -50,7 +50,7 @@ class RequestToken extends ConsumerToken {
  */
 	public function getAccessToken($options = array(), $params = array()) {
 		$response = $this->consumer->tokenRequest($this->consumer->httpMethod(), $this->consumer->accessTokenPath(), $this, $options, $params);
-		return new AccessToken($this->consumer, $response['oauth_token'], $response['oauth_token_secret']);
+		return new AccessToken($this->consumer, $response);
 	}
 
 /**

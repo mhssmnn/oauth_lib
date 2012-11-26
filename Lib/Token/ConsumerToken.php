@@ -36,7 +36,7 @@ class ConsumerToken extends Token {
  * @param string $secret 
  * @param string $params 
  */
-	public function __construct($consumer, $token, $secret, $params = array()) {
+	public function __construct($consumer, $token, $secret = null, $params = array()) {
 		parent::__construct($token, $secret, $params);
 		$this->consumer = $consumer;
 	}	
